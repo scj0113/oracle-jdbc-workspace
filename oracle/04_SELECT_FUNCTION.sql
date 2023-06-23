@@ -285,7 +285,7 @@ FROM EMPLOYEE;
  SELECT LAST_DAY('23/11/01') FROM DUAL;
  
  -- 직원명, 입사일, 입사월의 마지막 날짜, 입사한 월에 근무한 일수 조회
- SELECT EMP_NAME, HIRE_DATE, LAST_DAY(HIRE_DATE) "입사월의 마지막 날짜", LAST_DAY(HIRE_DATE)-HIRE_DATE + 1  "입사한 월에 근무한 일수"
+ SELECT EMP_NAME, HIRE_DATE, LAST_DAY(HIRE_DATE) "입사월의 마지막 날짜", ㅜ_DAY(HIRE_DATE)-HIRE_DATE + 1  "입사한 월에 근무한 일수"
  FROM EMPLOYEE;
  
  
