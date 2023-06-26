@@ -1,0 +1,45 @@
+
+
+
+ -- 01 보너스 포함한 연봉이 높은 5명의 사번, 이름, 부서명, 직급, 입사일, 순위 조회
+SELECT EMP_ID  사번, EMP_NAME  이름, DEPT_TITLE  부서명, JOB_NAME  직급, HIRE_DATE  입사일, ROWNUM  순위
+FROM (
+  SELECT ROWNUM, E.EMP_ID, E.EMP_NAME, D.DEPT_TITLE, J.JOB_NAME, E.HIRE_DATE,
+         (NVL((E.SALARY * E.BONUS),0) + E.SALARY)*12  "연봉"
+  FROM EMPLOYEE E
+  JOIN DEPARTMENT D ON E.DEPT_CODE = D.DEPT_ID
+  JOIN JOB J USING (JOB_CODE)
+  ORDER BY "연봉" DESC
+)
+WHERE ROWNUM <= 5;
+
+-- 02 부서별 급여 합계가 전체 급여 총 합의 20%보다 많은 부서의 부서명, 부서별 급여 합계 조회 (방법은 여러 가지..! 가급적으로 서브쿼리 사용해보세요!)
+SELECT DEPT_TITLE  부서명, SUM(SALARY)  급여합계
+FROM DEPARTMENT D
+JOIN EMPLOYEE E ON D.DEPT_ID = E.DEPT_CODE
+WHERE (
+  SELECT SUM(SALARY)
+  FROM EMPLOYEE)*0.2 < (
+  SELECT SUM(SALARY)
+  FROM EMPLOYEE
+  WHERE DEPT_CODE = D.DEPT_ID
+)
+GROUP BY DEPT_TITLE;
+ 
+-- 03 WITH을 이용하여 급여 합과 급여 평균 조회
+SELECT SUM(SALARY),AVG(SALARY)
+FROM EMPLOYEE;
+
+-- 03 WITH을 이용하여 급여 합과 급여 평균 조회
+WITH SAL_AVG AS (
+  SELECT AVG(NVL(SALARY, 0))  "평균급여"
+  FROM EMPLOYEE)
+  
+SELECT (SELECT SUM(SALARY) FROM EMPLOYEE)  "급여합계", "평균급여"
+FROM SAL_AVG;
+
+
+
+
+
+
