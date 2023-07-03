@@ -389,7 +389,7 @@ INSERT INTO MEM_CHECK VALUES ( 2,'user03','pass03','강개순','여',null,null);
      GENDER CHAR(3) CHECK(GENDER IN ('남','여')),
      PHONE VARCHAR2(13),
      EMAIL VARCHAR2(50),
-     GRADE_ID NUMBER REFERENCES MEM_GRADE --(GRADE_CODE)   --> 컬럼레벨방식    
+     GRADE_ID NUMBER REFERENCES MEM_GRADE (GRADE_CODE)   --> 컬럼레벨방식    
      --, FOREIGN KEY(GRADE_ID) REFERENCES MEM_GRADE(GRADE_CODE) --> 테이블레벨방식
      );
      
