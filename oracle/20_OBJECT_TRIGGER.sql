@@ -121,9 +121,6 @@ UPDATE TB_PRODUCT
 SET STOCK = STOCK - 5
 WHERE PCODE = 3;                      --> 코드를 잘못쳐 다른 재품이 출고되었을 경우!
 
-COMMIT;
-SELECT * FROM TB_PRODETAIL;
-SELECT * FROM TB_PRODUCT;
  
  -- TB_PRODETAIL 테이블에 INSERT 이벤트 발생시 TB_PRODUCT 테이블에 매번 자동으로 재고수량 UPDATE 되게끔 트리거 정의
  
@@ -150,6 +147,9 @@ SELECT * FROM TB_PRODUCT;
  END;
  /
  
+COMMIT;
+SELECT * FROM TB_PRODETAIL;
+SELECT * FROM TB_PRODUCT;
  
  
  

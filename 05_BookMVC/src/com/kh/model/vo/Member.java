@@ -36,6 +36,15 @@ public class Member {
 		this.status = status;
 		this.enrollDate = enrollDate;
 	}
+	public Member(int memberNo) {
+		this.memberNo = memberNo;
+	
+	}
+
+
+
+
+
 	public int getMemberNo() {
 		return memberNo;
 	}

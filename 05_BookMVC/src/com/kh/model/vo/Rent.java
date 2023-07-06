@@ -6,18 +6,23 @@ public class Rent {
 
 		
 	private int rentNo;
-	private Member memeber;
+	private Member member;
 	private Book book;
 	private Date rentDate;
 	public Rent() {}
 	
 	public Rent(int rentNo, Member memeber, Book book, Date rentDate) {
 		this.rentNo = rentNo;
-		this.memeber = memeber;
+		this.member = memeber;
 		this.book = book;
 		this.rentDate = rentDate;
 	}
 	
+	public Rent(Member member, Book book) {
+		this.member = member;
+		this.book = book;
+	}
+
 	public int getRentNo() {
 		return rentNo;
 	}
@@ -25,10 +30,10 @@ public class Rent {
 		this.rentNo = rentNo;
 	}
 	public Member getMemeber() {
-		return memeber;
+		return member;
 	}
 	public void setMemeber(Member memeber) {
-		this.memeber = memeber;
+		this.member = memeber;
 	}
 	public Book getBook() {
 		return book;
@@ -44,7 +49,7 @@ public class Rent {
 	}
 	@Override
 	public String toString() {
-		return "Rent [rentNo=" + rentNo + ", memeber=" + memeber + ", book=" + book + ", rentDate=" + rentDate + "]";
+		return "Rent [rentNo=" + rentNo + ", memeber=" + member + ", book=" + book + ", rentDate=" + rentDate + "]";
 	}
 	
 }

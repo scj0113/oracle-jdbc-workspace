@@ -122,9 +122,7 @@ public class BookDAO implements BookDAOTemplate{
 	public Member login(String id, String password) throws SQLException {
 		Connection conn = getConnect();
 		PreparedStatement st = conn.prepareStatement(p.getProperty("login"));
-		
-		// char rs.getString("status").charAt(0)
-		
+	
 		st.setString(1, id);
 		st.setString(2, password);
 

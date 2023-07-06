@@ -14,30 +14,23 @@ public class BookController {
 	private Member member = new Member();
 	
 	public ArrayList<Book> printBookAll(){
-	    ArrayList<Book> bookList = null;
-		
-	    try {
-	        bookList = dao.printBookAll();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-		
-	    return bookList;
+	try {
+		return dao.printBookAll();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return null;
 	}
 	
 	public boolean registerBook(Book book) {
 		
 	
-		
 		try {
-			ArrayList<Book> bookList = dao.printBookAll();
-			
-			dao.registerBook(book);
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		}
+			if(dao.registerBook(book)==1) 
+				return true;
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}		
 		return false;
 		
 		
@@ -47,7 +40,7 @@ public class BookController {
 		
 		
 		try {
-			dao.sellBook(no);
+			if(dao.sellBook(no)==1)
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -60,9 +53,9 @@ public class BookController {
 	
 	public boolean registerMember(Member member) {
 
+
 		try {
-			dao.registerMember(member);
-			return true;
+			if(dao.registerMember(member)==1) return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -72,38 +65,57 @@ public class BookController {
 	
 	
 	public Member login(String id, String password) {
-		
-		Member m = new Member();
-		m.setMemberId(id);
-		m.setMemberPwd(password);;		
-			try {
-				Member result = dao.login(id, password);
-				if (result != null) { 
-					return result;
-			}} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		
-		return null;
-		
+		try {
+			member = dao.login(id, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		return member;		
 	}
 	
-	public boolean deleteMember() {                           // update 쓰기
+	public boolean deleteMember() {  
+	
+		try {
+			if(dao.deleteMember(member.getMemberId(), member.getMemberPwd())==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
 		return false;
 		
 	}
 	
 	public boolean rentBook(int no) {
+		
+		try {
+			if(dao.rentBook(new Rent(new Member(member.getMemberNo()),new Book(no)))==1) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 		
 	}
 	
 	public boolean deleteRent(int no) {
+		
+		try {
+			if(dao.deleteRent(no)==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 		
 	}
 	
 	public ArrayList<Rent> printRentBook(){
+		try {
+			return dao.printRentBook(member.getMemberId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 		
 	}
