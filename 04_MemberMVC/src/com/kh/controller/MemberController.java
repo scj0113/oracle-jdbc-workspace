@@ -35,7 +35,7 @@ public class MemberController {
 
 		try {
 			Member result = dao.login(m);
-			if (result != null) { // 로그인 성공하면 이름 반환
+			if (result != null) {             // 로그인 성공하면 이름 반환
 				return result.getName();
 			}
 		} catch (SQLException e) {

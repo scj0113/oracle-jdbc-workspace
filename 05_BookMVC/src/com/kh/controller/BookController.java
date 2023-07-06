@@ -27,9 +27,6 @@ public class BookController {
 	
 	public boolean registerBook(Book book) {
 		
-		
-		
-			
 	
 		
 		try {
@@ -75,7 +72,19 @@ public class BookController {
 	
 	
 	public Member login(String id, String password) {
-		return member;
+		
+		Member m = new Member();
+		m.setMemberId(id);
+		m.setMemberPwd(password);;		
+			try {
+				Member result = dao.login(id, password);
+				if (result != null) { 
+					return m;
+			}} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+		return null;
 		
 	}
 	

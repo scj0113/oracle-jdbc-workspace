@@ -16,6 +16,10 @@ public class Member {
 		
 	}
 	
+	
+	
+	
+	
 	public Member(String memberId, String memberPwd, String memberName) {
 		super();
 		this.memberId = memberId;

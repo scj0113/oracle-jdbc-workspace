@@ -107,12 +107,27 @@ public class BookDAO implements BookDAOTemplate{
 
 	@Override
 	public Member login(String id, String password) throws SQLException {
-		
+		Connection conn = getConnect();
+		PreparedStatement st = conn.prepareStatement(p.getProperty("login"));
 		
 		// char rs.getString("status").charAt(0)
 		
+		st.setString(1, id);
+		st.setString(2, password);
+
+		ResultSet rs = st.executeQuery();
+		Member m = null;
+		if(rs.next()) {
+			m = new Member(rs.getString("id"),rs.getString("password"),rs.getString("name"));
+					}
+		closeAll(rs,st,conn);
+	return m;
+
 		
-		return null;
+		
+		
+		
+	
 	}
 
 	@Override
