@@ -20,11 +20,11 @@ public class Member {
 	
 	
 	
-	public Member(String memberId, String memberPwd, String memberName) {
+	public Member(String id, String password, String name) {
 		super();
-		this.memberId = memberId;
-		this.memberPwd = memberPwd;
-		this.memberName = memberName;
+		this.memberId = id;
+		this.memberPwd = password;
+		this.memberName = name;
 	}
 
 	public Member(int memberNo, String memberId, String memberPwd, String memberName, char status, Date enrollDate) {
@@ -71,6 +71,16 @@ public class Member {
 	}
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
+	}
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd + ", memberName="
+				+ memberName + ", status=" + status + ", enrollDate=" + enrollDate + "]";
 	}
 	
 }

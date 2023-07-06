@@ -9,17 +9,15 @@ public class Rent {
 	private Member memeber;
 	private Book book;
 	private Date rentDate;
-	public Rent() {
-		super();
-
-	}
+	public Rent() {}
+	
 	public Rent(int rentNo, Member memeber, Book book, Date rentDate) {
-		super();
 		this.rentNo = rentNo;
 		this.memeber = memeber;
 		this.book = book;
 		this.rentDate = rentDate;
 	}
+	
 	public int getRentNo() {
 		return rentNo;
 	}

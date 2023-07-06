@@ -102,7 +102,6 @@ PRINT VAR_BONUS;
 -- 바인드 변수의 값이 변경되면 변수의 값을 자동으로 출력
 SET AUTOPRINT ON;
 
-
  
  
  

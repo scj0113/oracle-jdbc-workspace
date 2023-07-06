@@ -79,7 +79,7 @@ public class BookController {
 			try {
 				Member result = dao.login(id, password);
 				if (result != null) { 
-					return m;
+					return result;
 			}} catch (SQLException e) {
 				e.printStackTrace();
 			}

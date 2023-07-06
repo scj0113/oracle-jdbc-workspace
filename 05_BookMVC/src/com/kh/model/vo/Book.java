@@ -7,11 +7,11 @@ public class Book {
 	private int bkNo;
 	private String bkTitle;
 	private String bkAuthor;
-	public Book() {
-		super();
-		
-		
-	}
+	
+	
+	public Book() {}
+	
+	
 	public Book(String bkTitle, String bkAuthor) {
 		super();
 		this.bkTitle = bkTitle;
