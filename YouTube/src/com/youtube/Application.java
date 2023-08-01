@@ -35,7 +35,7 @@ public class Application {
 		
 		Member member = new Member();
 		member.setMemberId(id);
-		member.setMemberPassword(password);
+		
 		member.setMemberNickname(nickname);
 		
 		if(yc.register(member)) {
